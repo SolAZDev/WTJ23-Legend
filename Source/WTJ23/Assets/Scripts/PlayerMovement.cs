@@ -3,26 +3,58 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody RB;
     public CharacterController PC;
-    public float Speed = 5;
-    public Vector2 CamForward;
+    public float Speed = 12f;
+    public Transform orientation;
+    float horizontalInput;
+    float verticalInput;
+    Vector3 MoveDirection;
+
+    //public Vector2 CamForward;
 
     // Start is called before the first frame update
     void Start()
     {
         PC = GetComponent<CharacterController>();
         RB = GetComponent<Rigidbody>();
+        RB.freezeRotation = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
+
+        Vector3 moveDirection = transform.right * x + transform.forward * z;    
+        PC.Move(moveDirection * Speed * Time.deltaTime);
     }
+
+    //private void FixedUpdate()
+    //{
+    //    MovePlayer();
+    //}
+    //private void MovePlayer()
+    //{
+    //    MoveDirection = orientation.forward *  verticalInput + orientation.right * horizontalInput;
+    //    RB.AddForce(MoveDirection.normalized * Speed * 10f, ForceMode.Force);
+    //}
+
+    //private void myInput()
+    //{
+    //    horizontalInput = Input.GetAxis("Horizontal");
+    //    verticalInput = Input.GetAxisRaw("Vertical");
+    //}
+
+
+
+
+
+
+
 
     void Movement()
     {
