@@ -1,8 +1,8 @@
 using UnityEngine;
 
-[RequireComponent(typeof(RigidBody))]
+[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
-public class Trap : MonoBehaviour
+public abstract class Trap : MonoBehaviour
 {
     Rigidbody rigidbody;
     Collider collider;
@@ -11,7 +11,7 @@ public class Trap : MonoBehaviour
     void Start()
     {
         rigidbody=GetComponent<Rigidbody>();
-        collider=GetComponent<collider>();
+        collider=GetComponent<Collider>();
     }
 
      void OnCollisionEnter(Collision other)
@@ -25,7 +25,11 @@ public class Trap : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(animator) animator.SetTrigger("Activate");
-        if(other.name==""){}
+        if(other.name.Contains("Jibaro")){ /* Jibaro Codo */}
+        if(other.name.Contains("Chupacabra")){ /* CabraSucc'r Codo */}
+        Activate();
     }
+
+    public abstract void Activate();
     
 }
