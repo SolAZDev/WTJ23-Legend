@@ -7,7 +7,6 @@ public abstract class Trap : MonoBehaviour
     Rigidbody rigidbody;
     Collider collider;
     public Animator animator;
-
     void Start()
     {
         rigidbody=GetComponent<Rigidbody>();
@@ -26,7 +25,8 @@ public abstract class Trap : MonoBehaviour
     {
         if(animator) animator.SetTrigger("Activate");
         if(other.name.Contains("Jibaro")){ /* Jibaro Codo */}
-        if(other.name.Contains("Chupacabra")){ /* CabraSucc'r Codo */}
+        if(other.name.Contains("Chupacabra"))
+        { other.GetComponent<BaseActor>().Health   }
         Activate();
     }
 

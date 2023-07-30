@@ -23,7 +23,13 @@ public class BaseActor : MonoBehaviour
         if (!animator) animator=GetComponent<Animator>();
     }
 
-
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.name.Contains("Trap"))
+        {
+            Health -= 10;
+        }
+    }
 
 
 }

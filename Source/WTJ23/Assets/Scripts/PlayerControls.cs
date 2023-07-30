@@ -1,16 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerControls : MonoBehaviour
+public class PlayerControls : BaseActor
 {
     public Rigidbody RB;
     Vector3 MoveDirection;
-    public float Speed = 12f;
     Vector2 moveJoy, joyAim;
+    bool grounded;
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask GroundMask;
+
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         RB = GetComponent<Rigidbody>();
     }
 
@@ -34,6 +40,13 @@ public class PlayerControls : MonoBehaviour
 
     public void OnJump()
     {
-        RB.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+        if (GroundCheck())
+        {
+            RB.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+        }
+    }
+    bool GroundCheck()
+    {
+        return Physics.CheckSphere(groundCheck.position, groundDistance, GroundMask);
     }
 }
