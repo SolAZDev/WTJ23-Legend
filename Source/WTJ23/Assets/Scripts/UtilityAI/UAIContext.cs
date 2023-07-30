@@ -12,11 +12,10 @@ public class CattleContext : IAIContext
 }
 
 
-public class JibaroContext : IAIContext
+public class JibaroChupaContext : IAIContext
 {
-    public JibaroContext(JibCCAI actor){ this.actor = actor; }
+    public Transform lastVictimSeen, nearestPrey;
+    public JibaroChupaContext(JibCCAI actor){ this.actor = actor; }
     public JibCCAI actor {get;set;}
 }
-
-
 
