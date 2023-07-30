@@ -47,18 +47,19 @@ public class PlayerControls : BaseActor
     {
         if (GroundCheck())
         {
-            // ToggleNavMeshRigid();
+            ToggleNavMeshRigid();
             RB.AddForce((Vector3.up+(isChupa?transform.forward:Vector3.zero)) * 10, ForceMode.VelocityChange);
             animator.SetTrigger("Jump");
-            // jumped=true;
+            jumped=true;
         }
     }
     
     private void OnCollisionEnter(Collision other) {
-        // if(GroundCheck() && jumped){
-            // ToggleNavMeshRigid();
-            // jumped=false;
-        // }
+        if (GroundCheck() && jumped)
+        {
+            ToggleNavMeshRigid();
+            jumped = false;
+        }
     }
     bool GroundCheck()
     {

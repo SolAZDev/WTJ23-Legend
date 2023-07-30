@@ -51,6 +51,7 @@ public class BaseActor : MonoBehaviour
     public void ToggleNavMeshRigid(){
         RB.isKinematic=!RB.isKinematic;
         navMeshAgent.enabled=!navMeshAgent.enabled;
+        print("Toggle");
     }
 
 
