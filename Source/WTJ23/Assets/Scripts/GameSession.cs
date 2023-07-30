@@ -2,7 +2,8 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class BoundsSpawner{
@@ -17,10 +18,13 @@ public class GameSession : MonoBehaviour
 {
     public int Timer = 720; //12 Minutes
     public List<BoundsSpawner> SpawnAreas;
-
+    private TMPro.TextMeshProUGUI TimerText;
+    
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        TimerText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
         SpawnAreas.ForEach(area=>{
             if(area.spawnables.Count<1) return;
             for (int i = 0; i < Random.Range(15,area.MaxSpawns); i++){
@@ -34,12 +38,25 @@ public class GameSession : MonoBehaviour
             }
         });
         yield return new WaitForEndOfFrame();
+        StartCoroutine(CountDown());
     }
     IEnumerator CountDown(){
         while(Timer>-1){
             yield return new WaitForSeconds(1);
             Timer--;
+            TimerText.text = "Time " + ConvertSecondsToHHMMSS(Timer);
         }
         print("Game Over!!");
+    }
+
+    public string ConvertSecondsToHHMMSS(float secs)
+    {
+        System.TimeSpan t = System.TimeSpan.FromSeconds(secs);
+        string result = string.Format("{1:D2}:{2:D2}",
+            t.Hours,
+            t.Minutes,
+            t.Seconds,
+            t.Milliseconds);
+        return result;
     }
 }
