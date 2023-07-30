@@ -19,7 +19,8 @@ public class BaseActor : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Animator animator;
     public Rigidbody RB;
-
+    public AudioClip Hurt, Die, Attack;
+    public AudioSource audioSource;
 
     public float TimeToDecreaseNervousness=3f, NervousnessDecreaseRate=.03f;
     
@@ -27,6 +28,7 @@ public class BaseActor : MonoBehaviour
     public void Start() { 
         navMeshAgent=GetComponent<NavMeshAgent>(); 
         if (!animator) animator=GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
