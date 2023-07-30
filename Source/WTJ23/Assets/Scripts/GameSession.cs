@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
 public class BoundsSpawner{
     public Collider bounds;
     [Range(15,200)]
@@ -13,11 +15,11 @@ public class BoundsSpawner{
 
 public class GameSession : MonoBehaviour
 {
-    public float Timer = 720; //12 Minutes
+    public int Timer = 720; //12 Minutes
     public List<BoundsSpawner> SpawnAreas;
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
         SpawnAreas.ForEach(area=>{
             if(area.spawnables.Count<1) return;
@@ -31,11 +33,13 @@ public class GameSession : MonoBehaviour
                 Instantiate(area.spawnables[Random.Range(0,area.spawnables.Count-1)], itemPosition, Quaternion.identity);
             }
         });
+        yield return new WaitForEndOfFrame();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    IEnumerator CountDown(){
+        while(Timer>-1){
+            yield return new WaitForSeconds(1);
+            Timer--;
+        }
+        print("Game Over!!");
     }
 }

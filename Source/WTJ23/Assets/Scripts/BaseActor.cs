@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
 public class BaseActor : MonoBehaviour
 {
     [Header("Actor Settings")]
@@ -26,20 +29,29 @@ public class BaseActor : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name.Contains("Trap"))
+        if (other.tag == "Trap")
         {
-            Health -= 10;
-            StopMoving();
+            RecieveDamage(10);
+            StartCoroutine(StopMoving());
         }
+        else if (other.tag == "ChupaMouth") RecieveDamage(15);
+        else if (other.tag == "ChupaClaw") RecieveDamage(8);
+        else if (other.tag == "Machete") RecieveDamage(10);
     }
-    
+
+    void RecieveDamage(int damage){
+        Health-=damage;
+        // Ay me mori
+        if (Health<=0) OnPerish();
+        //else audioSource.play(Pain)
+    }
+
     IEnumerator DecreaseNervousness(){
         while(Health>0){
             yield return new WaitForSeconds(TimeToDecreaseNervousness);
             this.Nervouseness-=NervousnessDecreaseRate;
         }
     }
-
 
     public void SendAbility(string args)
     {
@@ -49,5 +61,19 @@ public class BaseActor : MonoBehaviour
     IEnumerator StopMoving()
     {
         yield return new WaitForSeconds(Random.Range(3,5));
+        CanMove=true;
+    }
+
+     public void OnPerish(){
+        gameObject.tag="Perished";
+        //TODO: Play PerishSound
+        BroadcastMessage("HeardDeath", transform.position);
+        animator.SetTrigger("Perish");
+        StartCoroutine(PostPerishExpiration());
+    }
+
+    IEnumerator PostPerishExpiration(){
+        yield return new WaitForSeconds(30);
+        gameObject.SetActive(false);
     }
 }

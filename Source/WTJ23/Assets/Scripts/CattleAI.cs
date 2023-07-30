@@ -21,4 +21,5 @@ public class CattleAI : BaseActor{
         animator.SetFloat("Moving", 1f);
         navMeshAgent.SetDestination(transform.position+(Random.insideUnitSphere*MaxWalkDistance));
     }
+
 }

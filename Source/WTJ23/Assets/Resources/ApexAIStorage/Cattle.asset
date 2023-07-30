@@ -16,6 +16,13 @@ MonoBehaviour:
   version: 0
   aiId: 2c1af2a5-5a14-47b8-8af4-80f0939134ec
   configuration: '{"@type":"Apex.AI.UtilityAI, Assembly-CSharp","_rootSelectorId":447d146c3a3d47138dcd791750c22048,"_id":2c1af2a55a1447b88af480f0939134ec,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
-    Assembly-CSharp","_id":447d146c3a3d47138dcd791750c22048,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    Assembly-CSharp"}}]}'
-  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":0},"DefaultQualifier":{}}}'
+    Assembly-CSharp","_id":447d146c3a3d47138dcd791750c22048,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    Assembly-CSharp","action":{"@type":"CattleGoAround, Assembly-CSharp","Run":true},"_scorers":[{"@type":"CattleSeesChupa,
+    Assembly-CSharp","score":100},{"@type":"CattleNervousAboveThreshold, Assembly-CSharp","Threshold":0,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"CattleEat, Assembly-CSharp"},"_scorers":[{"@type":"CattleWantsToEat,
+    Assembly-CSharp","score":50},{"@type":"CattleNervousBelowThreshold, Assembly-CSharp","Threshold":0.80000001,"score":50}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"CattleGoAround, Assembly-CSharp","Run":false}}}]}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":60,"@top":80,"@width":200,"@height":220},"QualifierView":{"Name":"P
+    A N I C O","Description":"Ay santa cacucha","ActionView":{"Name":"VAMONOS"}},"QualifierView":{"Name":"Como
+    que tengo hambre?","ActionView":{"Name":"Pues come"}},"DefaultQualifier":{"Name":"Me
+    voy pa la calle","ActionView":{}}}}'
