@@ -18,6 +18,8 @@ public class BaseActor : MonoBehaviour
     [HideInInspector]public bool hasSeenEnemy=false;
     public NavMeshAgent navMeshAgent;
     public Animator animator;
+    public Rigidbody RB;
+
 
     public float TimeToDecreaseNervousness=3f, NervousnessDecreaseRate=.03f;
     
@@ -45,6 +47,13 @@ public class BaseActor : MonoBehaviour
         if (Health<=0) OnPerish();
         //else audioSource.play(Pain)
     }
+
+    public void ToggleNavMeshRigid(){
+        RB.isKinematic=!RB.isKinematic;
+        navMeshAgent.enabled=!navMeshAgent.enabled;
+    }
+
+
 
     IEnumerator DecreaseNervousness(){
         while(Health>0){

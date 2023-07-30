@@ -2,14 +2,18 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Apex.AI;
+using Apex.AI.Components;
 
-public class CattleAI : BaseActor{
+public class CattleAI : BaseActor, IContextProvider{
     [Header("AI Settings")]
     public float MaxWalkDistance=5;
     public float MaxRunDistance=30;
-
+    public IAIContext GetContext(System.Guid id) { return context; }
+    CattleContext context;
     void Start() {
         base.Start();
+        context = new CattleContext(this);
     }
     public void MoveAround(){
         navMeshAgent.speed=Speed;

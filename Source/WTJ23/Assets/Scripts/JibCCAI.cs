@@ -2,10 +2,16 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-
-public class JibCCAI : BaseActor{
+using Apex.AI;
+using Apex.AI.Components;
+public class JibCCAI : BaseActor,IContextProvider {
     [HideInInspector] public Vector3 targetPos, lastAudioArea;
     Coroutine audioReset;
+    JibaroChupaContext context;
+    public IAIContext GetContext(System.Guid id) { return context; }
+    private void OnEnable() {
+        context=new JibaroChupaContext(this);
+    }
     public void GoToTarget(bool run){
         animator.SetFloat("Moving", run ? 1 : .49f);
         navMeshAgent.speed = run ? RunSpeed : Speed;
