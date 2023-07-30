@@ -1,0 +1,2 @@
+[attr]unityYAML text merge=unityyamlmerge diff eol=lf
+[attr]useLFS filter=lfs diff=lfs merge=lfs -text
