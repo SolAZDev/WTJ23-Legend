@@ -16,6 +16,7 @@ public class BaseActor : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Animator animator;
 
+    public float TimeToDecreaseNervousness=3f, NervousnessDecreaseRate=.03f;
     
     // Start is called before the first frame update
     public void Start() { 
@@ -31,6 +32,14 @@ public class BaseActor : MonoBehaviour
             StopMoving();
         }
     }
+    
+    IEnumerator DecreaseNervousness(){
+        while(Health>0){
+            yield return new WaitForSeconds(TimeToDecreaseNervousness);
+            this.Nervouseness-=NervousnessDecreaseRate;
+        }
+    }
+
 
     public void SendAbility(string args)
     {
