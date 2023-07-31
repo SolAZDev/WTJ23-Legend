@@ -45,21 +45,24 @@ public class PlayerControls : BaseActor
 
     public void OnJump()
     {
+            print("Jump ngh1");
         if (GroundCheck())
         {
-            ToggleNavMeshRigid();
+            print("Jump ngh");
+            // ToggleNavMeshRigid();
             RB.AddForce((Vector3.up+(isChupa?transform.forward:Vector3.zero)) * 10, ForceMode.VelocityChange);
             animator.SetTrigger("Jump");
-            jumped=true;
+            // jumped=true;
         }
     }
     
     private void OnCollisionEnter(Collision other) {
-        if (GroundCheck() && jumped)
-        {
-            ToggleNavMeshRigid();
-            jumped = false;
-        }
+        if(other.transform.tag=="Machete") RecieveDamage(8);
+        // if (GroundCheck() && jumped)
+        // {
+            // ToggleNavMeshRigid();
+            // jumped = false;
+        // }
     }
     bool GroundCheck()
     {

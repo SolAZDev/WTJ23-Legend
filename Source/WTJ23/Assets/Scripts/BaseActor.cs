@@ -19,7 +19,7 @@ public class BaseActor : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Animator animator;
     public Rigidbody RB;
-    public AudioClip Hurt, Die, Attack;
+    public AudioClip Hurt, Die, Attack, Idle;
     public AudioSource audioSource;
 
     public float TimeToDecreaseNervousness=3f, NervousnessDecreaseRate=.03f;
@@ -43,7 +43,7 @@ public class BaseActor : MonoBehaviour
         else if (other.tag == "Machete") RecieveDamage(10);
     }
 
-    void RecieveDamage(int damage){
+    public void RecieveDamage(int damage){
         Health-=damage;
         // Ay me mori
         if (Health<=0) OnPerish();
@@ -78,14 +78,16 @@ public class BaseActor : MonoBehaviour
 
      public void OnPerish(){
         gameObject.tag="Perished";
-        //TODO: Play PerishSound
-        BroadcastMessage("HeardDeath", transform.position);
+        if(Die!=null) audioSource.PlayOneShot(Die);
+        navMeshAgent.enabled=false;
         animator.SetTrigger("Perish");
         StartCoroutine(PostPerishExpiration());
+        // BroadcastMessage("HeardDeath", transform.position);
     }
 
     IEnumerator PostPerishExpiration(){
-        yield return new WaitForSeconds(30);
+        animator.enabled=false;
+        yield return new WaitForSeconds(5);
         gameObject.SetActive(false);
     }
 }

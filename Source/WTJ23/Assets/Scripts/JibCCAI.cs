@@ -27,6 +27,10 @@ public class JibCCAI : BaseActor,IContextProvider {
         StartCoroutine(IResetAudioMemory());
     }
 
+    void Update(){
+        animator.SetFloat("Moving", navMeshAgent.remainingDistance);
+    }
+
     IEnumerator IResetAudioMemory(){
         yield return new WaitForSeconds(30);
         lastAudioArea=Vector3.zero;

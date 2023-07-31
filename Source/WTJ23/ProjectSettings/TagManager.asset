@@ -10,6 +10,7 @@ TagManager:
   - Machete
   - Trap
   - Fire
+  - Perished
   layers:
   - Default
   - TransparentFX

@@ -26,4 +26,11 @@ public class CattleAI : BaseActor, IContextProvider{
         navMeshAgent.SetDestination(transform.position+(Random.insideUnitSphere*MaxWalkDistance));
     }
 
+    void OnCollisionEnter(Collision other) {
+        if(other.transform.tag=="Chupa") OnPerish();
+    }
+
+    private void Update() {
+        animator.SetFloat("Moving", navMeshAgent.remainingDistance);
+    }
 }

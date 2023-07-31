@@ -23,28 +23,36 @@ public class GameSession : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        TimerText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-
         SpawnAreas.ForEach(area=>{
             if(area.spawnables.Count<1) return;
-            for (int i = 0; i < Random.Range(15,area.MaxSpawns); i++){
+            for (int i = 0; i < Random.Range(area.MaxSpawns/2,area.MaxSpawns); i++){
                 Vector3 bounds = area.bounds.bounds.extents;
                 Vector3 spawnerPosition = area.bounds.transform.position;
                 Vector3 itemPosition = new Vector3(
                                                     spawnerPosition.x+Random.Range(-bounds.x, bounds.x),
                                                     area.SpawnHeight,
                                                     spawnerPosition.z+Random.Range(-bounds.z, bounds.z));
-                Instantiate(area.spawnables[Random.Range(0,area.spawnables.Count-1)], itemPosition, Quaternion.identity);
+
+                var obj = Instantiate(area.spawnables[Random.Range(0,area.spawnables.Count-1)]);
+                try{
+                    UnityEngine.AI.NavMeshAgent agent = obj.GetComponent<UnityEngine.AI.NavMeshAgent>();
+                    UnityEngine.AI.NavMeshHit hit;
+                    UnityEngine.AI.NavMesh.SamplePosition(new Vector3(itemPosition.x,10,itemPosition.y), out hit, 100, -1);
+                    agent.Warp(hit.position);
+                }catch{
+                    obj.transform.position=itemPosition;
+                }
             }
         });
         yield return new WaitForEndOfFrame();
+        TimerText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         StartCoroutine(CountDown());
     }
     IEnumerator CountDown(){
         while(Timer>-1){
             yield return new WaitForSeconds(1);
             Timer--;
-            TimerText.text = "Time " + ConvertSecondsToHHMMSS(Timer);
+            // TimerText.text = "Time " + ConvertSecondsToHHMMSS(Timer);
         }
         print("Game Over!!");
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3739125749965730236}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b66280550a5c0499587f2dc6e57a3466,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.9446325
+      value: 169.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b66280550a5c0499587f2dc6e57a3466,
         type: 3}
@@ -52,7 +52,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b66280550a5c0499587f2dc6e57a3466,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.763571
+      value: 148.71
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b66280550a5c0499587f2dc6e57a3466,
         type: 3}
@@ -93,6 +93,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: chupa_anim Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b66280550a5c0499587f2dc6e57a3466,
+        type: 3}
+      propertyPath: m_TagString
+      value: Chupa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -227,7 +232,7 @@ Animator:
   m_GameObject: {fileID: 598714089633493052}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56c9bcf7f1a054736bffa574ad3b1392, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -382,9 +387,14 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   animator: {fileID: 0}
   RB: {fileID: 0}
+  Hurt: {fileID: 8300000, guid: e5caea29d37960dc8bba8dfb8edd314a, type: 3}
+  Die: {fileID: 8300000, guid: 68cd3971499cc352eaeb92dd3be4bda1, type: 3}
+  Attack: {fileID: 8300000, guid: 542f89db8ee900b5ca9e7ed4ad16ed8e, type: 3}
+  Idle: {fileID: 8300000, guid: 286d5239b1dd69059a5cad0c715a4b00, type: 3}
+  audioSource: {fileID: 5101973603816673210}
   TimeToDecreaseNervousness: 3
   NervousnessDecreaseRate: 0.03
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 3739125749965730236}
   groundDistance: 0.4
   GroundMask:
     serializedVersion: 2
