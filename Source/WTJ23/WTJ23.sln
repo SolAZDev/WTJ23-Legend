@@ -1,12 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ludiq.PeekCore.Runtime", "Ludiq.PeekCore.Runtime.csproj", "{0fcb6191-5dfe-dd61-f4c2-e5726816e740}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ludiq.PeekCore.Editor", "Ludiq.PeekCore.Editor.csproj", "{c851fc20-58e4-41cc-73a0-31578695808f}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ludiq.Peek.Editor", "Ludiq.Peek.Editor.csproj", "{1f6fa95c-cab8-a254-7db3-862be79abdbf}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{58bfba84-e2c4-494f-e8fa-770b4148b96c}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{31bd4cc5-24dc-3c83-4895-7e6f0f880f0d}"
@@ -16,12 +10,6 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0fcb6191-5dfe-dd61-f4c2-e5726816e740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0fcb6191-5dfe-dd61-f4c2-e5726816e740}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{c851fc20-58e4-41cc-73a0-31578695808f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{c851fc20-58e4-41cc-73a0-31578695808f}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1f6fa95c-cab8-a254-7db3-862be79abdbf}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1f6fa95c-cab8-a254-7db3-862be79abdbf}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58bfba84-e2c4-494f-e8fa-770b4148b96c}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58bfba84-e2c4-494f-e8fa-770b4148b96c}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31bd4cc5-24dc-3c83-4895-7e6f0f880f0d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
