@@ -14,7 +14,7 @@ public class JibCCAI : BaseActor,IContextProvider {
     }
     public void GoToTarget(bool run){
         animator.SetFloat("Moving", run ? 1 : .49f);
-        navMeshAgent.speed = run ? RunSpeed : Speed;
+        navMeshAgent.speed = run ? RunSpeed : Speed; 
         navMeshAgent.SetDestination(targetPos);
     } 
 
@@ -28,7 +28,7 @@ public class JibCCAI : BaseActor,IContextProvider {
     }
 
     void Update(){
-        animator.SetFloat("Moving", navMeshAgent.remainingDistance);
+        animator.SetFloat("Moving", navMeshAgent.velocity.magnitude);
     }
 
     IEnumerator IResetAudioMemory(){

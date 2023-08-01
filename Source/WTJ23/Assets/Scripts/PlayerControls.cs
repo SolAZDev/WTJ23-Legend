@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.AI;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerControls : BaseActor
 {
@@ -12,7 +13,7 @@ public class PlayerControls : BaseActor
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask GroundMask;
-    bool isChupa=false, jumped=false;
+    bool isChupa=false, jumped=false, canCheckForGround=true;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,24 +50,42 @@ public class PlayerControls : BaseActor
         if (GroundCheck())
         {
             print("Jump ngh");
-            // ToggleNavMeshRigid();
-            RB.AddForce((Vector3.up+(isChupa?transform.forward:Vector3.zero)) * 10, ForceMode.VelocityChange);
-            animator.SetTrigger("Jump");
-            // jumped=true;
+            // ToggleNavMeshRigid
+            StartCoroutine(Jump());
         }
     }
     
     private void OnCollisionEnter(Collision other) {
+        print(other.transform.name);
         if(other.transform.tag=="Machete") RecieveDamage(8);
-        // if (GroundCheck() && jumped)
-        // {
-            // ToggleNavMeshRigid();
-            // jumped = false;
-        // }
+        if (GroundCheck() && canCheckForGround) StartCoroutine(ResetJump());
     }
     bool GroundCheck()
     {
         return Physics.CheckSphere(groundCheck.position, groundDistance, GroundMask);
+    }
+
+
+    IEnumerator Jump(){
+        canCheckForGround = false;
+        navMeshAgent.updatePosition = false;
+        navMeshAgent.updateRotation = false;
+        RB.isKinematic = false;
+        RB.AddForce((Vector3.up+(isChupa?transform.forward:Vector3.zero)) * 10, ForceMode.Impulse);
+        animator.SetTrigger("Jump");
+        jumped=true;
+        yield return new WaitForSeconds(.25f);
+        canCheckForGround = true;
+    }
+
+    IEnumerator ResetJump(){
+        yield return new WaitForSeconds(0.1f);
+        navMeshAgent.Warp(transform.position);
+        navMeshAgent.updatePosition = true;
+        navMeshAgent.updateRotation = true;
+        RB.isKinematic = true;
+        // ToggleNavMeshRigid();
+        jumped = false;
     }
 
 }

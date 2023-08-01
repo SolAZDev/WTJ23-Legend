@@ -57,7 +57,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Slash
+  m_Name: Machetazo ahi
   m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: ff23e1802b192c722a820d4d272fb038,
+  m_Motion: {fileID: -203655887218126122, guid: b8e9450fd11801697b75c79e367dcba1,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -100,7 +100,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: f8040576f8d77211989e5e7066e445ae,
+  m_Motion: {fileID: -203655887218126122, guid: 4ad97a0ae9779faee91f91ad5f2b238c,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -154,7 +154,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 724c23f934d84f1bb9c11ceb19e3e648,
+  m_Motion: {fileID: -4791504522942941401, guid: 724c23f934d84f1bb9c11ceb19e3e648,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -183,7 +183,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 2862c4d6f19abb2f4bcf204e6cc7a640,
+  m_Motion: {fileID: -203655887218126122, guid: 7c1c47d8fbbdff89fbf2a6e25d6050bd,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -337,7 +337,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HeDed
+  m_Name: SE MURIIOOOOO
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -350,7 +350,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 621ab7a7ad0e70940a241cc182bb580c,
+  m_Motion: {fileID: -203655887218126122, guid: 972b84e44cac24c549bec8759c9277ba,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
