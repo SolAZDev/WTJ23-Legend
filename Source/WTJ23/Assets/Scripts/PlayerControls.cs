@@ -46,19 +46,15 @@ public class PlayerControls : BaseActor
 
     public void OnJump()
     {
-            print("Jump ngh1");
-        if (GroundCheck())
-        {
-            print("Jump ngh");
-            // ToggleNavMeshRigid
-            StartCoroutine(Jump());
-        }
+        if (GroundCheck()) StartCoroutine(Jump());
     }
     
     private void OnCollisionEnter(Collision other) {
-        print(other.transform.name);
-        if(other.transform.tag=="Machete") RecieveDamage(8);
         if (GroundCheck() && canCheckForGround) StartCoroutine(ResetJump());
+    }
+
+    private void OnTriggerEnter(Collider other){
+        if(other.transform.tag=="Machete" && isChupa) RecieveDamage(8);
     }
     bool GroundCheck()
     {

@@ -16,13 +16,15 @@ public class CattleAI : BaseActor, IContextProvider{
         context = new CattleContext(this);
     }
     public void MoveAround(){
+        Running=false;
         navMeshAgent.speed=Speed;
-        animator.SetFloat("Moving", .45f);
+        // animator.SetFloat("Moving", .45f);
         navMeshAgent.SetDestination(transform.position+(Random.insideUnitSphere*MaxWalkDistance));
     }
     public void RunAround(){
+        Running=true;
         navMeshAgent.speed=RunSpeed;
-        animator.SetFloat("Moving", 1f);
+        // animator.SetFloat("Moving", 1f);
         navMeshAgent.SetDestination(transform.position+(Random.insideUnitSphere*MaxWalkDistance));
     }
 
@@ -31,6 +33,7 @@ public class CattleAI : BaseActor, IContextProvider{
     }
 
     private void Update() {
-        animator.SetFloat("Moving", navMeshAgent.remainingDistance);
+        animator.SetFloat("Moving", navMeshAgent.velocity.normalized.magnitude>0?(Running?RunSpeed:Speed):0);
+        // animator.SetFloat("Moving", navMeshAgent.remainingDistance);
     }
 }

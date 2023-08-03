@@ -17,7 +17,7 @@ MonoBehaviour:
   aiId: f6392462-891d-40e6-888b-7114ebe4b519
   configuration: '{"@type":"Apex.AI.UtilityAI, Assembly-CSharp","_rootSelectorId":56ad9731f6024a96ab51241cc01722fd,"_id":f6392462891d40e6888b7114ebe4b519,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":56ad9731f6024a96ab51241cc01722fd,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"JibaroChupaGoToTarget, Assembly-CSharp","Run":false},"_scorers":[{"@type":"JibaroChupaSeesEnemy,
+    Assembly-CSharp","action":{"@type":"JibaroChupaGoToTarget, Assembly-CSharp","Run":false,"LookAtTarget":false},"_scorers":[{"@type":"JibaroChupaSeesEnemy,
     Assembly-CSharp","isChupa":false,"score":100},{"@type":"JibaroChupaSeesDead,
     Assembly-CSharp","onlyInViewCone":false,"score":75}]},{"@type":"Apex.AI.CompositeAllAboveThresholdQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":b5314553ed374f7980843fd7be234112},"_scorers":[{"@type":"JibaroChupaCanStillFight,
@@ -29,25 +29,25 @@ MonoBehaviour:
     Assembly-CSharp","action":{"@type":"JibaroChupaGoAround, Assembly-CSharp","Run":false}}},{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":b5314553ed374f7980843fd7be234112,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"JibaroChupaAttack, Assembly-CSharp"},"_scorers":[{"@type":"JibaroChupaCloseEnough,
-    Assembly-CSharp","maxDist":5,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"JibaroChupaGoToTarget, Assembly-CSharp","Run":true},"_scorers":[{"@type":"JibaroChupaNerveAboveThreshold,
+    Assembly-CSharp","maxDist":3,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"JibaroChupaGoToTarget, Assembly-CSharp","Run":true,"LookAtTarget":false},"_scorers":[{"@type":"JibaroChupaNerveAboveThreshold,
     Assembly-CSharp","Threshold":50,"score":0.2}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    Assembly-CSharp","action":{"@type":"JibaroChupaGoToTarget, Assembly-CSharp","Run":false}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","action":{"@type":"JibaroChupaGoToTarget, Assembly-CSharp","Run":false,"LookAtTarget":false}}},{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":cf5fcd4d924b42afbc1f7ad58195cdd1,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"JibaroChupaGoAround, Assembly-CSharp","Run":true}}},{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":85c4e64b3a7e4dacadc5260f519b9546,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"JibaroChupaGoToLastThingHeard, Assembly-CSharp","Run":true},"_scorers":[{"@type":"JibaroChupaNerveAboveThreshold,
     Assembly-CSharp","Threshold":50,"score":0.5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"JibaroChupaGoToLastThingHeard, Assembly-CSharp","Run":false}}}]}'
-  editorConfiguration: '{"offset":{"@x":-37,"@y":14},"zoom":1,"SelectorView":{"ViewArea":{"@left":63,"@top":94,"@width":200,"@height":340},"QualifierView":{"Name":"I
+  editorConfiguration: '{"offset":{"@x":7,"@y":92},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":87,"@top":156,"@width":160,"@height":272},"QualifierView":{"Name":"I
     see a T H R E A T","ActionView":{"Name":"Vamo aya"}},"QualifierView":{"Name":"Miralo
     ahi, esa cosa condena","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"DEJAME
     QUIETO","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Khe
     fue esso?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"Name":"Vamo
-    por ahi"}}},"SelectorView":{"ViewArea":{"@left":323,"@top":54,"@width":200,"@height":220},"Name":"Casa
+    por ahi"}}},"SelectorView":{"ViewArea":{"@left":295,"@top":124,"@width":160,"@height":176},"Name":"Casa
     Gargolas le dicen","QualifierView":{"Name":"Vamo''a darle","ActionView":{"Name":"METELEAHI"}},"QualifierView":{"Name":"La
     cosa esta caliente","ActionView":{"Name":"Vamo''a''rompele la"}},"DefaultQualifier":{"Name":"tomalo
-    con calma","ActionView":{"Name":"Yo te cojo bajando"}}},"SelectorView":{"ViewArea":{"@left":543,"@top":274,"@width":200,"@height":100},"Name":"Cmam","DefaultQualifier":{"Name":"VIENE
-    HACIAMIIIIIIIIAAAAAA","ActionView":{"Name":"ME CAGO EN LA"}}},"SelectorView":{"ViewArea":{"@left":323,"@top":314,"@width":200,"@height":160},"Name":"A
+    con calma","ActionView":{"Name":"Yo te cojo bajando"}}},"SelectorView":{"ViewArea":{"@left":471,"@top":300,"@width":160,"@height":80},"Name":"Cmam","DefaultQualifier":{"Name":"VIENE
+    HACIAMIIIIIIIIAAAAAA","ActionView":{"Name":"ME CAGO EN LA"}}},"SelectorView":{"ViewArea":{"@left":295,"@top":332,"@width":160,"@height":128},"Name":"A
     inverstigar!","QualifierView":{"ActionView":{"Name":"Avanza pa ya!!"}},"DefaultQualifier":{"ActionView":{"Name":"Con
     Calma"}}}}'

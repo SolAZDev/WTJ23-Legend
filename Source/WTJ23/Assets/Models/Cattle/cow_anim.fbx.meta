@@ -128,7 +128,7 @@ ModelImporter:
       name: Armature|walk
       takeName: Armature|walk
       internalID: -4799524434163024911
-      firstFrame: 0
+      firstFrame: 1
       lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
@@ -211,7 +211,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.005
+    globalScale: 0.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

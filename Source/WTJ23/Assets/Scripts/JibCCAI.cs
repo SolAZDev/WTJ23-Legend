@@ -8,13 +8,22 @@ public class JibCCAI : BaseActor,IContextProvider {
     [HideInInspector] public Vector3 targetPos, lastAudioArea;
     Coroutine audioReset;
     JibaroChupaContext context;
+
+    bool lookAtTarget;
+    public bool LookAtTarget {
+        get { return lookAtTarget; }
+        set {
+            navMeshAgent.updateRotation = !value;
+            lookAtTarget=value;
+        }
+        
+    }
     public IAIContext GetContext(System.Guid id) { return context; }
     private void OnEnable() {
         context=new JibaroChupaContext(this);
     }
     public void GoToTarget(bool run){
-        animator.SetFloat("Moving", run ? 1 : .49f);
-        navMeshAgent.speed = run ? RunSpeed : Speed; 
+        Running=run;
         navMeshAgent.SetDestination(targetPos);
     } 
 
@@ -28,7 +37,12 @@ public class JibCCAI : BaseActor,IContextProvider {
     }
 
     void Update(){
-        animator.SetFloat("Moving", navMeshAgent.velocity.magnitude);
+        animator.SetFloat("Moving", navMeshAgent.velocity.normalized.magnitude>0?(Running?RunSpeed:Speed):0);
+        if(LookAtTarget){
+            Vector3 rotTarg = (targetPos-transform.position);
+            rotTarg.y= transform.position.y;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotTarg, Vector3.up), Time.deltaTime * (Running?RunSpeed:Speed));
+        }
     }
 
     IEnumerator IResetAudioMemory(){

@@ -27,6 +27,7 @@ public sealed class JibaroChupaGoAround : ActionBase{
     public bool Run=false;
     public override void Execute(IAIContext context){
         var cattle = (JibaroChupaContext) context;
+        cattle.actor.LookAtTarget = false;
         cattle.actor.navMeshAgent.speed = Run?cattle.actor.RunSpeed:cattle.actor.Speed;
         cattle.actor.navMeshAgent.SetDestination(cattle.actor.transform.position+Random.onUnitSphere*50);
     }
@@ -37,16 +38,18 @@ public sealed class JibaroChupaGoToLastThingHeard : ActionBase{
     public bool Run=false;
     public override void Execute(IAIContext context){
         var cattle = (JibaroChupaContext) context;
-        cattle.actor.navMeshAgent.speed = Run?cattle.actor.RunSpeed:cattle.actor.Speed;
+        cattle.actor.LookAtTarget = false;
+        cattle.actor.Running = Run;
         cattle.actor.navMeshAgent.SetDestination(cattle.actor.lastAudioArea);
     }
 }
 
 public sealed class JibaroChupaGoToTarget : ActionBase{
-     [ApexSerialization, FriendlyName("Run?")]
-    public bool Run=false;
+     [ApexSerialization, FriendlyName("Run?")] public bool Run=false;
+     [ApexSerialization, FriendlyName("Look At Target?")] public bool LookAtTarget=false;
     public override void Execute(IAIContext context){
         var cattle = (JibaroChupaContext) context;
+        cattle.actor.LookAtTarget = LookAtTarget;
         cattle.actor.GoToTarget(Run);
     }
 }
@@ -54,8 +57,7 @@ public sealed class JibaroChupaGoToTarget : ActionBase{
 public sealed class JibaroChupaAttack : ActionBase{
     public override void Execute(IAIContext context){
         var cattle = (JibaroChupaContext) context;
-
-        //TODO: MOve this ot JiCAI.Attack
+        cattle.actor.LookAtTarget = true;
         cattle.actor.animator.SetTrigger("Attack1");
     }
 }

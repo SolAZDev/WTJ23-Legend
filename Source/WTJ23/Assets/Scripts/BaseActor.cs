@@ -11,7 +11,7 @@ using UnityEngine.AI;
 public class BaseActor : MonoBehaviour
 {
     [Header("Actor Settings")]
-    [Range(10,50)] public int Health=10;
+    public int Health=10;
     [Range(-1,1)]  public float Nervouseness=0;
     public float Speed=3f, RunSpeed=5f;
     public bool CanMove;
@@ -21,6 +21,14 @@ public class BaseActor : MonoBehaviour
     public Rigidbody RB;
     public AudioClip Hurt, Die, Attack, Idle;
     public AudioSource audioSource;
+    bool running;
+    public bool Running {
+        get { return running; }
+        set {
+            navMeshAgent.speed = value ? RunSpeed : Speed;
+            running = value;
+        }
+    }
 
     public float TimeToDecreaseNervousness=3f, NervousnessDecreaseRate=.03f;
     
